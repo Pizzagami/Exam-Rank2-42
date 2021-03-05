@@ -13,7 +13,6 @@ char    *remalloc(char *s, char c)
 	int        x = -1;
 	int        i = ft_strlen(s);
 
-	i = ft_strlen(s);
 	str = malloc(sizeof(char) * (i + 2));
 	while (++x < i)
 		str[x] = s[x];
