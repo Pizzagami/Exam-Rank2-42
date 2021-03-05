@@ -30,7 +30,7 @@ int    get_next_line(char **line)
 
     if (line == NULL)
         return (-1);
-    *line = malloc(sizeof(char *) * 1);
+    *line = malloc(sizeof(char) * 1);
     (*line)[0] = 0;
 
         while((x = read(0, &c, 1)) >= 0 )
