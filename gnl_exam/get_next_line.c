@@ -3,12 +3,8 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-int ft_strlen(char *s)
-{
-	int i = 0;
-	while(s[i])
-		i++;
-	return(i);
+int ft_strlen(char *s) {
+	return((*s != 0) ? ft_strlen(++s)  + 1 : 0 );
 }
 
 char	*remalloc(char *s, char c)
