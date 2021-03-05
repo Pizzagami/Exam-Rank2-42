@@ -30,40 +30,29 @@ char	*remalloc(char *s, char c)
 	return (str);
 }
 
-int ret_line(char **line, char *s, int i)
+int	get_next_line(char **line)
 {
-	int j = 0;
-	*line = malloc(sizeof(char) * 1000);
-	while(s[i] != 0 && s[i] != '\n')
-	{
-		(*line)[j] = s[i];
-		j++;
-		i++;
-	}
-	(*line)[j] = 0;
-	return (i + 1);
-}
-
-int	get_next_line(int fd,char **line)
-{
-	static char *s = NULL;
-	static int i = 0;
 	char			c;
 	int				x;
 
-	if(s == NULL)
-	{
-		s = malloc(sizeof(char *) * 1);
-		s[0] = 0;
-	}
 	if (line == NULL)
 		return (-1);
-	if (i == 0)
-	{
-		while((x = read(fd, &c, 1)) > 0)
-			s = remalloc(s, c);
+	*line = malloc(sizeof(char *) * 1);
+	(*line)[0] = 0;
+
+		while(1)
+		{
+			x = read(0, &c, 1);
+			if (x < 0)
+			{
+				free(*line);
+				return (-1);
+			}
+			if (x == 0)
+				return 0;
+			if (c == '\n')
+				return 1;
+			*line = remalloc(*line, c);
 	}
-	i = ret_line(line, s, i);
-	return ((s[i - 1] == 0) ? 0 : 1);
 }
 
