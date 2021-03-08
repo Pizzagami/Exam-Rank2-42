@@ -5,6 +5,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int get_next_line(int fd, char **line);
+int get_next_line(char **line);
 
 #endif
