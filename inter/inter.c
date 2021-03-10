@@ -2,7 +2,7 @@
 
 int main(int ac, char **av)
 {
-	int tab[200] = {0};
+	int tab[127] = {0};
 	int i = 0;
 	char *s1 = av[1];
 	char *s2 = av[2];
