@@ -19,16 +19,16 @@ char	*remalloc(char *s, char c)
 	return (str);
 }
 
-int		get_next_line(int fd, char **line)
+int		get_next_line(char **line)
 {
 	char	c;
-	int		x;
+	int	x;
 
 	if (line == NULL)
 		return (-1);
 	*line = malloc(sizeof(char) * 1);
 	(*line)[0] = 0;
-	while((x = read(fd , &c, 1)) >= 0)
+	while((x = read(0 , &c, 1)) >= 0)
 	{
 		if (x == 0 || c == '\n')
 			return ((x == 0) ? 0 : 1);
